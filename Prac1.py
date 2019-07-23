@@ -11,13 +11,18 @@ Date: 23/07/2019
 
 # import Relevant Librares
 import RPi.GPIO as GPIO
-chan_list = (5,6,12)
+LED_list = (5,6,12)
+button_List = (17,18)
 # Logic that you write
 def main():
-	GPIO.setup(channel,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-	GPIO.setup(, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-	GPIO.setmode(GPIO.BOARD)
-	GPIO.setup(chan_list,GPIO.OUT)
+	init_GPIO()
+	GPIO.output(5,GPIO.HIGH)
+
+def init_GPIO():
+	GPIO.setmode(GPIO.BCM)
+	#GPIO.setup(button_list,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+	GPIO.setup(LED_list,GPIO.OUT,initial=GPIO.LOW)
+
 
 # Only run the functions if 
 if __name__ == "__main__":
