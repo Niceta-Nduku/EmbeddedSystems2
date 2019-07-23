@@ -9,21 +9,20 @@ Date: 23/07/2019
 import RPi.GPIO as GPIO
 import time
 LED_List = (5,6,12) #LED channels
-button_List = (17,18) #button channels
+on_button = 18 #on button
+off_button = 17 #off button
 
 def main():
-	GPIO.output(LED_List,GPIO.HIGH)
-	print ("LED on")
-	time.sleep(1)
-	GPIO.output(LED_List,GPIO.LOW)
-	print ("LED off")
-	time.sleep(1)
+	if GPIO.input(on_button)== GPIO.HIGH:
+		print ("on button pressed")
+		GPIO.output(LED_List,GPIO.HIGH)
+		print ("LED on")
 
 def init_GPIO():
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setwarnings(False)
-	#GPIO.setup(button_list,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-	GPIO.setup(LED_List,GPIO.OUT)
+	GPIO.setup(on_button,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+	GPIO.setup(LED_List,GPIO.OUT, initial=GPIO.LOW)
 
 init_GPIO()
 
