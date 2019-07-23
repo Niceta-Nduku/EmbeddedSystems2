@@ -17,11 +17,14 @@ def main():
 		print ("on button pressed")
 		GPIO.output(LED_List,GPIO.HIGH)
 		print ("LED on")
-
+	if GPIO.input(off_button)==GPIO.HIGH:
+		print("off button pressed")
+		GPIO.output(LED_List,GPIO.LOW)
+		print("LED off")
 def init_GPIO():
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setwarnings(False)
-	GPIO.setup(on_button,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+	GPIO.setup([off_button,on_button],GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 	GPIO.setup(LED_List,GPIO.OUT, initial=GPIO.LOW)
 
 init_GPIO()
