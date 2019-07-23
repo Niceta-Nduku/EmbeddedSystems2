@@ -1,22 +1,20 @@
 #!/usr/bin/python3
 """
-Python Practical Template
-Keegan Crankshaw
-Readjust this Docstring as follows:
 Names: Niceta Nduku
 Student Number: NDKNIC001
 Prac: Prac 1
 Date: 23/07/2019
 """
 
-# import Relevant Librares
 import RPi.GPIO as GPIO
-LED_list = (5,6,12)
-button_List = (17,18)
-# Logic that you write
+
+LED_list = (5,6,12) #LED channels
+button_List = (17,18) #button channels
+
 def main():
 	init_GPIO()
 	GPIO.output(5,GPIO.HIGH)
+	GPIO.cleanup()
 
 def init_GPIO():
 	GPIO.setmode(GPIO.BCM)
